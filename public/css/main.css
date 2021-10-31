@@ -1,0 +1,335 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #47b096 #e8e8e8;
+}
+
+/* Works on Chrome/Edge/Safari */
+div ::-webkit-scrollbar {
+  width: 5px;
+}
+div ::-webkit-scrollbar-track {
+  background: #e8e8e8;
+}
+div ::-webkit-scrollbar-thumb {
+  background-color: #47b096;
+  border-radius: 20px;
+  /* border: 3px solid black #E8E8E8; */
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  word-break: break-word;
+  text-align: justify;
+  text-justify: inter-word;
+}
+.container {
+  position: absolute;
+  top: 10%;
+  left: 13%;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  height: 80%;
+  background-color: #ffffff /*#FFFFFF*/;
+  border-radius: 9px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1080px) {
+  .container {
+    width: 80%;
+    left: 10%;
+  }
+  .error {
+    position: relative;
+    left: 1%;
+    top: 30px;
+    width: 100%;
+    color: yellow;
+  }
+}
+
+@media screen and (max-width: 936px) {
+  .container {
+    width: 85%;
+    left: 7%;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .container {
+    width: 90%;
+    left: 3%;
+  }
+}
+
+@media screen and (max-width: 731px) {
+  .container {
+    width: 95%;
+    left: 1%;
+    margin: 0 10px;
+  }
+}
+
+.task-lists:hover {
+  cursor: pointer;
+}
+
+.task-list {
+  border-radius: 9px;
+  width: 30%;
+  /* overflow: auto;
+  height: 90%; */
+  background-color: #e8e8e8;
+  padding: 10px;
+}
+.task-list-header {
+  text-align: center;
+  color: #47b096;
+  font-family: monospace;
+  padding: 10px;
+}
+.task-list-body {
+  overflow: auto;
+  height: 77%;
+  padding: 0 10px;
+}
+
+.task {
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 9px;
+  display: flex;
+  justify-content: space-between;
+  padding: 9px;
+  color: #47b096;
+  font-weight: 550;
+}
+.task label {
+  cursor: pointer;
+}
+.task-list-btns {
+  margin-left: 5px;
+  display: flex;
+  /* flex-flow: column;
+  align-items: flex-start; */
+}
+
+/* .active-task{
+  background-color: #47b096;
+} */
+
+.todo-list-btns {
+  margin-left: 10px;
+  display: flex;
+}
+
+.e-btn {
+  margin-right: 4px;
+  margin-left: 5px;
+}
+.task-btn {
+  background-color: transparent;
+  cursor: pointer;
+  outline: inherit;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  font-size: 19px;
+  color: #11998e;
+}
+
+.list {
+  font-family: monospace;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #757575;
+  outline: 0;
+  font-size: 15px;
+  padding: 8px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.list:focus {
+  font-family: monospace;
+  font-size: 15px;
+  padding-bottom: 6px;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #5aaa79);
+  border-image-slice: 1;
+}
+
+.task-list-creator {
+  /* position: relative;
+  /* bottom: 15px; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-list-creator-section {
+  position: absolute;
+  bottom: 15px;
+  width: 26%;
+}
+
+.btn {
+  background-color: transparent;
+  /* position: relative; */
+  /* top: 7px; */
+  /* right: 1px; */
+  /* left: 20px; */
+  margin-left: 20px;
+  cursor: pointer;
+  outline: inherit;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  font-size: 22px;
+  color: #11998e;
+}
+
+.todo-list {
+  width: 70%;
+  /* position: absolute;
+  left: 30%; */
+  padding: 10px;
+  font-family: monospace;
+}
+
+.todo-list-header {
+  text-align: center;
+  color: #47b096;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+hr {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 9px 9px -9px rgba(0, 0, 0, 0.3);
+}
+
+.todo-list-body {
+  overflow: auto;
+  height: 77%;
+  padding: 0 10px;
+  /* visibility:hidden; */
+}
+
+.todo-task {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  margin-bottom: 9px;
+  padding: 9px;
+  color: #1b7e65;
+  font-size: 16px;
+  font-family: monospace;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-btn {
+  background-color: #e8e8e8;
+  cursor: pointer;
+  outline: inherit;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  font-size: 19px;
+  color: #11998e;
+}
+
+.todoList {
+  font-family: monospace;
+  border: 0;
+  border-bottom: 2px solid #757575;
+  outline: 0;
+  font-size: 15px;
+  padding: 8px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.todoList:focus {
+  font-family: monospace;
+  font-size: 15px;
+  padding-bottom: 6px;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #5aaa79);
+  border-image-slice: 1;
+}
+
+.todoBtn {
+  /* background-color: white; */
+  background-color: transparent;
+  /* position: relative;
+  top: 3px; */
+  /* left: 10px; */
+  margin-left: 10px;
+  cursor: pointer;
+  outline: inherit;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+  font-size: 22px;
+  color: #11998e;
+}
+
+.todo-list-creator {
+  position: absolute;
+  bottom: 15px;
+  width: 69%;
+}
+
+.todo-list-creator input {
+  width: 90%;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateY(100%);
+    z-index: 0;
+    box-shadow: none;
+    border-bottom: none;
+  }
+  100% {
+    transform: translateY(0);
+    z-index: 0;
+    box-shadow: none;
+    border-bottom: none;
+  }
+}
+
+.error {
+  font-size: 17px;
+  font-family: monospace;
+  font-weight: 500;
+  color: #f54444;
+  position: relative;
+  left: 13%;
+  top: 40px;
+  width: 42%;
+  background-color: #e8e8e8;
+  border-radius: 9px;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  clip-path: inset(-10px -10px -0px -10px);
+  border-bottom: none;
+  padding: 5px;
+  z-index: 1;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}

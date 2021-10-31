@@ -1,0 +1,4 @@
+make to do support multiple languages
+make sync to other device also like (G-keep, simple notes,)
+see design of others
+see mi notes and all..

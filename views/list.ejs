@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="/js/showHideTodo.js"></script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <title><%= pageTitle %></title>
+  </head>
+  <body>
+    <!-- <% if(!activeTask) {%>
+      <h1><%= activeTask %></h1>
+    <% }else{ %>
+      <p><%= activeTask %></p>
+    <%}%> -->
+    <p></p>
+    <div class="container">
+      <div class="task-list">
+        <div class="task-list-header">
+          <h1>TASK LISTS</h1>
+        </div>
+        <hr />
+        <div class="task-list-body">
+          <div class="task-lists"">
+            <% if(tasks) {%> <% tasks.forEach(taskObj => { %>
+              <div class="task task_<%= taskObj.taskId %>"  onclick="showTodoList(this)">
+                <!-- <input type="checkbox" id="task-1" /> -->
+                <label contenteditable="false" for="task_<%= taskObj.taskId %>"><%= taskObj.task %></label>
+                <div class="task-list-btns">
+                  <!-- <button class="task-btn" type="submit">
+                    <i class="far fa-eye"></i>
+                  </button> -->
+                  <button class="task-btn" onclick="editTask(event, this)" type="submit">
+                    <i class="fas fa-edit e-btn"></i>
+                  </button>
+                  <button class="task-btn task_<%= taskObj.taskId %> " onclick="deleteTask(event, this)" type="submit">
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+            <% }) %> <% } %>
+          </div>
+          <div class="task-list-creator-section">
+            <form action="/createList" method="post">
+              <div class="task-list-creator">
+                <input
+                  type="text"
+                  name="todoTask"
+                  class="new list"
+                  placeholder="Task Name"
+                  aria-label="Task Name"
+                  autocomplete="off"
+                />
+                <button class="btn" type="submit">
+                  <i class="far fa-plus-square"></i>
+                </button>
+                <input type="hidden" name="task" value="task" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="vertical-scroll"></div> -->
+      <div class="todo-list">
+        <div class="todo-list-header">
+          <% if(activeTask && tasks) {%>
+            <h3><%= tasks[activeTask.split("_")[1] - 1].task %></h3>
+            <% if(allLists.hasOwnProperty(activeTask)) {%>
+              <p><%= allLists[activeTask].length %> Tasks Remaining</p>
+          <% }} %>
+        </div>
+        <hr />
+        <div class="todo-list-body">
+          <div class="todo-tasks">
+            <% if(allLists) {%>
+            <% if(allLists.hasOwnProperty(activeTask) ) {%> <% allLists[activeTask].forEach(listObj => { %>
+            <div class="todo-task">
+              <label contenteditable="false" for="listId_<%= listObj.listId %> <%= activeTask %>"><%= listObj.list %></label>
+              <div class="todo-list-btns">
+                <button class="list-btn" onclick="editList(event, this)" type="submit">
+                  <i class="fas fa-edit e-btn"></i>
+                </button>
+                <button class="list-btn" id="<%= listObj.listId %> <%= activeTask %>" type="submit" onclick="deleteList(this, event)">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+            <% }) %> <% } %>
+            <% } %>
+          </div>
+          <% if(activeTask) {%>
+          <div class="todo-list-creator">
+            <form action="/createList" method="post">
+              <input
+                type="text"
+                name="todoList"
+                class="todoList"
+                placeholder="New Todo"
+                aria-label="New Todo"
+                autocomplete="off"
+              />
+              <button class="todoBtn" type="submit">
+                <i class="far fa-plus-square"></i>
+              </button>
+              <input type="hidden" id="activeTaskId" name="taskId" value="<% if(activeTask) {%><%= activeTask %><%}%>">
+            </form>
+          </div>
+          <% } %>
+        </div>
+        
+      </div>
+    </div>
+  </body>
+</html>
